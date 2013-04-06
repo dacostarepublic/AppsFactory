@@ -1,0 +1,36 @@
+<!--<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @post.description %>
+</p>
+
+<p>
+  <b>Video code:</b>
+  <%= @post.video_code %>
+</p>
+
+<p>
+  <b>Platform:</b>
+  <%= @post.platform %>
+</p>
+
+	<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>-->
+<h3><%=@post.title%></h3><p style="font-style:italic;">last updated:<%=I18n.localize(@post.updated_at, :format => :long)%></p>
+<hr>
+<iframe src="http://player.vimeo.com/video/<%=@post.video_code%>" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p style="font-style:italic;"><a href="http://vimeo.com/<%=@post.video_code%>">watch on Vimeo</a></p>
+<%=@post.description%>
+
+<hr>
+<% if user_signed_in? %>
+    <% if current_user.has_role? :admin %>
+    	<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <% end %>
+<%end%>
+<%= link_to 'Back', :back %>

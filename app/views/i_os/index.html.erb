@@ -1,9 +1,9 @@
-<h3>Home</h3>
+<h3>iOS</h3>
 <hr>
 <% if @posts.any? %>
 <% @posts.each do |post| %>
   <h4><%=link_to post.title, post %></h4>
- <p style="font-style:italic;">last updated:<%=I18n.localize(post.updated_at, :format => :long)%></p>
+<p style="font-style:italic;">last updated:<%=I18n.localize(post.updated_at, :format => :long)%></p>
   	<div class="span12">
   		<%=post.description[0..200]%><%=link_to "...(read more)", post%>
   	</div>
